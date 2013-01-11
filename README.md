@@ -17,6 +17,11 @@ First install Python 2 and all the dependences mentioned above.  Then
 put Blogsair somewhere you like, copy ``config-sample.py`` to
 ``config.py`` and modify it as needed.
 
+Then if you decide to use the style as-is, go to
+``blog/static/css/style.scss`` and change the value of variable
+``$UrlPrefix`` to the same value of ``APPLICATION_ROOT`` you just
+wrote in ``config.py``.
+
 You will probably want to modify the style as well.  It is mainly
 defined in ``blog/static/css/style.scss``, which is in
 [SCSS](http://sass-lang.com/) syntax.  In Blogsair, each post can have
