@@ -1,0 +1,27 @@
+#Content
+{
+    line-height: 1.4;
+
+    p, li
+    {
+        text-align: justify;
+    }
+
+    p
+    {
+        text-indent: 1.2em;
+    }
+
+    p:first-of-type, h1 + p, h2 + p, h3 + p, p.ImgWrapper, pre p
+    {
+        text-indent: 0pt;
+    }
+
+    p, li
+    {
+        hyphens: auto;
+        -webkit-hyphens: auto;
+        -moz-hyphens: auto;
+        -ms-hyphens: auto;
+    }
+}

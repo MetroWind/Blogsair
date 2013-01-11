@@ -1,0 +1,28 @@
+{% extends "_body.html" %}
+
+{% block main %}
+{% block sidebar %}
+<aside id="Sidebar" class="Discrete">
+  <h2 class="SidebarHead">Categories</h2>
+  <ul>{% for Category in meta.Site.Categories %}
+    <li>
+      <a href="{{ url_for('category', cat=Category) }}">{{ Category }}</a>
+    </li>
+  {% endfor %}
+  </ul>
+
+  <h2 class="SidebarHead">Links</h2>
+  <ul>{% for Link in meta.Site.FriendLinks %}
+    <li>
+      <a href="{{ Link.URL }}" title="{{ Link.Desc }}">{{ Link.Name }}</a>
+    </li>
+  {% endfor %}
+  </ul>
+</aside>
+{% endblock %}
+
+<div id="Content">
+{% block content %}
+{% endblock %}
+</div>
+{% endblock %}

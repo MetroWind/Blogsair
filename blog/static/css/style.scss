@@ -1,0 +1,400 @@
+// -*- mode: css; -*-
+
+$UrlPrefix: /blog2;
+
+/* Define colors */
+$Grey: #bab5ab;
+$Brown: #b38860;
+$Red: #dd4e0c;
+$Blue: #588589;
+$Green: #9aaa79;
+$Purple: #c198b3;
+$White: #f5f4f0;
+$Black: #110600;
+
+/* Define fonts */
+$Sans: Futura, "Helvetica Neue", Helvetica, Arial, STHeiti sans-serif;
+$Serif: ScalaOT, Scala, Mate, Palatino, STZhongsong, "Songti SC", serif;
+$Monospace: Inconsolata, Consolas, "Lucida Console", monospace;
+
+$ColorBG: $White;
+$ColorFG: $Black;
+$ColorLink: $Red;
+$FontSizeBase: 15pt;
+$WidthPageNormal: 500pt;
+
+/* Layout */
+body
+{
+    margin: 0pt;
+    padding: 0pt;
+}
+
+#Wrapper
+{
+    width: $WidthPageNormal;
+    margin: 30pt auto 30pt auto;
+}
+
+pre
+{
+    /* overflow: auto; */
+}
+
+header
+{
+    border-bottom: 1pt solid $Grey;
+}
+
+footer
+{
+    clear: both;
+    border-top: 1pt solid $Grey;
+    padding-top: 10pt;
+    margin-top: 30pt;
+}
+
+#BlogTitle
+{
+    margin-bottom: 20pt;
+}
+
+nav#MainNav
+{
+    ul
+    {
+        list-style: none;
+        margin: 0pt;
+        padding-bottom: 3pt;
+
+        li
+        {
+            display: inline;
+            margin-right: 4pt;
+
+            a
+            {
+                padding: 4pt 4pt 4pt 4pt;
+            }
+        }
+    }
+}
+
+aside#Sidebar
+{
+    float: right;
+}
+
+#Content
+{
+    margin-bottom: 20pt;
+
+    blockquote, ul, ol
+    {
+        margin: 0.5em 0pt 0.5em 0pt;
+    }
+
+    p
+    {
+        margin-top: 0pt;
+        margin-bottom: 0pt;
+    }
+
+    p.ImgWrapper
+    {
+        margin: 0.8em -5pt 0.8em -5pt;
+        img
+        {
+            border: solid darken($ColorBG, 5%) 5pt;
+        }
+    }
+
+    .PostHeader
+    {
+        margin-bottom: 20pt;
+    }
+
+    .PostTitle
+    {
+        margin-bottom: 5pt;
+    }
+
+    #ArticleList
+    {
+        margin-top: 20pt;
+    }
+
+    #Comment
+    {
+        margin-top: 30pt;
+        padding-top: 0pt;
+        border-top: solid 1pt $Grey;
+        font-family: $Sans !important;
+    }
+}
+
+/* Color */
+body
+{
+    background-color: $ColorBG;
+    color: $ColorFG;
+}
+
+h1, h2, h3, h4, h5, h6
+{
+    font-weight: normal;
+}
+
+h1
+{
+    font-family: $Sans;
+    margin-top: 30pt;
+}
+
+h2
+{
+    font-size: 124%;
+    margin-bottom: 15pt;
+    margin-top: 20pt;
+}
+
+h3
+{
+    font-size: 100%;
+    font-style: italic;
+}
+
+a
+{
+    color: $ColorLink;
+}
+
+a:hover
+{
+    color: $ColorBG;
+    background-color: $ColorLink;
+}
+
+li::marker, li::-moz-list-bullet,
+{
+    color: $Grey;
+}
+
+.Discrete
+{
+    color: $Grey;
+}
+
+#BlogTitle a
+{
+    color: $ColorFG;
+}
+
+#BlogTitle a:hover
+{
+    background-color: transparent;
+}
+
+nav#MainNav
+{
+    ul
+    {
+        font-family: $Sans;
+        font-size: 83.33%;
+
+        a, li.CurrentPage > a:hover
+        {
+            color: $Grey;
+            background-color: transparent;
+        }
+        a:hover, li.CurrentPage > a
+        {
+            color: $ColorBG;
+            background-color: $Grey;
+        }
+    }
+}
+
+aside#Sidebar
+{
+    a
+    {
+        color: $Grey;
+        background-color: transparent;
+    }
+    a:hover
+    {
+        color: $ColorBG;
+        background-color: $Grey;
+    }
+}
+/* Typography */
+@font-face
+{
+    font-family: Futura;
+    src: local(Futura), url(#{$UrlPrefix}/static/fonts/fabrik/fabrik_n.otf);
+}
+
+@font-face
+{
+    font-family: Futura;
+    font-style: italic;
+    src: local(Futura), url(#{$UrlPrefix}/static/fonts/fabrik/fabrik_i.otf);
+}
+
+@font-face
+{
+    font-family: Mate;
+    src: local(Mate), url(#{$UrlPrefix}/static/fonts/mate/Mate-Regular.otf);
+}
+
+@font-face
+{
+    font-family: Mate;
+    font-style: italic;
+    src: local(Mate), url(#{$UrlPrefix}/static/fonts/mate/Mate-Italic.otf);
+}
+
+@font-face
+{
+    font-family: "Mate SC";
+    src: local("Mate SC"), url(#{$UrlPrefix}/static/fonts/mate/MateSC-Regular.otf);
+}
+
+body
+{
+    font-size: $FontSizeBase;
+    font-family: $Serif;
+}
+
+a
+{
+    text-decoration: none;
+}
+
+blockquote
+{
+    text-indent: 0pt;
+    font-style: italic;
+}
+
+strong
+{
+    font-weight: normal;
+    font-family: $Sans;
+}
+
+code
+{
+    font-size: $FontSizeBase*0.8333;
+    font-family: $Monospace;
+}
+
+pre
+{
+    font-family: $Monospace;
+    line-height: 1.2;
+    white-space: pre-wrap;
+    -ms-word-break: break-all;
+    word-break: break-all;
+    font-size: $FontSizeBase*0.8333;
+}
+
+ul, ol
+{
+	list-style-position: outside;
+    padding-left: 0pt;
+    margin-left: 0pt;
+}
+
+ul
+{
+    list-style-type: square;
+}
+
+abbr, acronym
+{
+    border-bottom: 1px dashed $Grey;
+}
+
+.Discrete
+{
+    font-size: 69.44%;
+    text-align: center;
+    font-family: $Sans;
+}
+
+#PageMeta .CategoryName
+{
+    font-style: italic;
+}
+
+#BlogTitle
+{
+    font-size: 200%;
+    font-family: "Mate SC", STZhongsong, "Songti SC", serif;
+}
+
+#PageMeta
+{
+    float: right;
+}
+
+nav#MainNav
+{
+    ul
+    {
+        font-family: $Sans;
+        font-size: 83.33%;
+    }
+}
+
+aside#Sidebar
+{
+    text-align: left;
+
+    ul, ol
+    {
+        list-style: none;
+    }
+
+    h2.SidebarHead
+    {
+        font-size: $FontSizeBase;
+    }
+}
+
+#Content
+{
+    .PostMeta
+    {
+        font-family: $Sans;
+        font-size: 69.44%;
+        color: $Grey;
+    }
+
+    #ArticleList
+    {
+        h1
+        {
+            font-size: 120%;
+            text-align: center;
+        }
+        p
+        {
+            text-align: center;
+        }
+    }
+}
+
+/* Livefyre comments */
+a.lf_comment_user_nick
+{
+    font-weight: normal !important;
+}
+
+#livefyre #lf_fyre_head .lf_head_bar label, #livefyre #lf_fyre_head .lf_user_loggedin .lf_user_nick
+{
+    font-weight: normal !important;
+    font-family: $Sans !important;
+}

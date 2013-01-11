@@ -1,0 +1,18 @@
+{% extends "_main.html" %}
+
+{% block pagemeta %}
+Posts under category <span class="CategoryName">{{ category }}</span>
+{% endblock %}
+
+{% block content %}
+<div id="ArticleList">
+  {% for Post in pages %}
+  <div class="ArticleItem">
+    <h1><a href="{{ url_for('page', path=Post.path) }}">
+        {{ Post.title }}
+    </a></h1>
+    <p class="Abstract">{{ Post.abstract|safe }}</p>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

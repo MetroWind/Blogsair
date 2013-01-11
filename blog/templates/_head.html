@@ -1,0 +1,34 @@
+{% block head %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ config.SITE_NAME }} / {{ meta.PageTitle }}</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
+    {% if page is defined %}
+      {% if page.language|upper == "ZH" %}
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/type-zh.css') }}" />
+      {% else %}
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/type-en.css') }}" />
+      {% endif %}
+    {% else %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/type-en.css') }}" />
+    {% endif %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/syntax.css') }}" />
+
+    <!-- <script src="{{ url_for('index') }}/media/js/jquery-1.7.2.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/sidebar.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/img.js') }}"></script>
+
+    <link href="{{ url_for('index') }}/atom.xml" type="application/atom+xml"
+          rel="alternate" title="Article Feed" />
+
+    <script type="text/javascript"
+            src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+  </head>
+  <body>
+    <div id="Wrapper">
+{% endblock %}
