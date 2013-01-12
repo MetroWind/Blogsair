@@ -7,7 +7,7 @@ def build():
     # Generate CSS
     AllSCSSs = glob.glob("blog/static/css/*.scss")
     for SCSS in AllSCSSs:
-        local("scss {} {}".format(SCSS, os.path.splitext(SCSS)[0] + ".css"))
+        local("scss -C {} {}".format(SCSS, os.path.splitext(SCSS)[0] + ".css"))
     # Build contents
     local("blog/blog.py build")
 
