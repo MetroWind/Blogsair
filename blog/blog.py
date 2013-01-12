@@ -9,6 +9,24 @@ from flask_frozen import Freezer
 # Import the config module
 Config = imp.load_source("Config", os.path.join(os.path.dirname(__file__), "..", "config.py"))
 
+def varReplace(content, var_dict):
+    Cont = content
+    PatternBegin = 0
+    while True:
+        PatternBegin = Cont.find('{{', PatternBegin)
+        if PatternBegin == -1:
+            break
+        VarBegin = PatternBegin + 3
+        PatternEnd = Cont.find('}}', PatternBegin)
+        PatternEnd += 2
+        VarEnd = PatternEnd - 3
+        Pattern = Cont[PatternBegin:PatternEnd]
+        Var = Cont[VarBegin:VarEnd]
+        Cont = Cont.replace(Pattern, eval(Var, var_dict))
+    return Cont
+
+
+
 App = flask.Flask(__name__)
 
 App.config.from_object("Config.AppConfig")
@@ -55,6 +73,9 @@ def htmlPage(page):
 @App.route('/p/<path:path>/')
 def page(path):
     Page = Pages.get_or_404(path)
+
+    Page.body = varReplace(Page.body, {"app_root": App.config["APPLICATION_ROOT"],
+                                       "url_for": flask.url_for})
     Meta = FrontEndMeta(Site, Page["title"])
     return flask.render_template("post.html", page=Page, meta=Meta)
 

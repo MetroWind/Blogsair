@@ -43,6 +43,28 @@ be put inside a directory named with the current year.  Then the
 editor you defined in ``config.py`` will be used to open that file.
 You can then fill the metadata and start writing.
 
+Each post contains a metadata section in YAML syntax, and a body in
+Markdown.  In the body, one may use ``{{ var }}`` to reference a
+variable in Python code.  Note that the spaces between brackets and
+``var`` are mandatory, and each of them can only be *one* space.  For
+example
+
+    ![Grape fruit]({{ url_for('static', filename='path/to/image.jpg') }})
+
+would insert an image, whose URL is retrieved with ``url_for()``.  The
+variables that can be used in posts are defined inside the ``page()``
+function in ``blog/blog.py``, in the ``varReplace`` line.
+
+A minimal post then would run like thus
+
+    title: Some Post
+    created: 2013-01-10 15:17:29
+    categories: [Rumble,]
+    language: EN
+    abstract: This is a very short post.
+       
+    Hello *world*!
+
 Then you may run ``fab build`` to generate static HTML.  They will be
 put in the ``build`` directory.  A ``fab deploy`` will rsync the
 static content to the remote host you defined in ``config.py``.
