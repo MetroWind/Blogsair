@@ -12,6 +12,9 @@ class AppConfig(object):
     SITE_AUTHOR = u"Derp"
     APPLICATION_ROOT = "/blog"
 
+PostSort = "created"
+PostSortReverse = True
+
 Links = [Link("http://example.com/", "A Site", "A web site"),]
 Host = "user@myhost.com:/path/to/my/web/contents"
 Editor = os.environ["EDITOR"]

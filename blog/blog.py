@@ -25,7 +25,9 @@ def varReplace(content, var_dict):
         Cont = Cont.replace(Pattern, eval(Var, var_dict))
     return Cont
 
-
+def sortPosts(posts):
+    return sorted(posts, key=lambda x: x[Config.PostSort],
+           reverse=Config.PostSortReverse)
 
 App = flask.Flask(__name__)
 
@@ -64,7 +66,7 @@ Site.FriendLinks = Config.Links
 @App.route("/")
 def index():
     Meta = FrontEndMeta(Site)
-    return flask.render_template("index.html", pages=Pages, meta=Meta)
+    return flask.render_template("index.html", pages=sortPosts(Pages), meta=Meta)
 
 @App.route("/<page>/")
 def htmlPage(page):
@@ -82,7 +84,7 @@ def page(path):
 
 @App.route('/cat/<cat>/')
 def category(cat):
-    CatPages = [p for p in Pages if cat in p.meta.get('categories', [])]
+    CatPages = sortPosts([p for p in Pages if cat in p.meta.get('categories', [])])
     Meta = FrontEndMeta(Site, ':'+cat)
     return flask.render_template("category.html", pages=CatPages, category=cat,
                                  meta=Meta)
