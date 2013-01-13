@@ -71,7 +71,4 @@ static content to the remote host you defined in ``config.py``.
 
 # Example
 
-You can see the default template and style in
-[My blog](http://darksair.org/blog/).  It is not build with Blogsair,
-but the template is identical.  Currently I do have a blog build with
-Blogsair, but I do not want to show it here.
+[My blog](http://darksair.org/blog/) is built with Blogsair.
