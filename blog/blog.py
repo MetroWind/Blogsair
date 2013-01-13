@@ -53,7 +53,8 @@ freezer = Freezer(App)
 
 AllCategories = set()
 for Page in Pages:
-    AllCategories.update(set(Page["categories"]))
+    if "categories" in Page.meta:
+        AllCategories.update(set(Page["categories"]))
 
 Site = BlogSite()
 Site.Categories = AllCategories
