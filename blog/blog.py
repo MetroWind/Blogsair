@@ -32,10 +32,10 @@ App = flask.Flask(__name__)
 App.config.from_object("Config.AppConfig")
 App.config["DEBUG"] = True
 App.config["FLATPAGES_AUTO_RELOAD"] = App.config["DEBUG"]
-App.config["FLATPAGES_EXTENSION"] = '.md'
-App.config["FLATPAGES_ROOT"] = "contents"
+App.config["FLATPAGES_EXTENSION"] = u'.md'
+App.config["FLATPAGES_ROOT"] = u"contents"
 App.config["FREEZER_BASE_URL"] = App.config["APPLICATION_ROOT"]
-App.config["FREEZER_DESTINATION"] = "../build"
+App.config["FREEZER_DESTINATION"] = u"../build"
 
 class BlogSite(object):
     def __init__(self):
