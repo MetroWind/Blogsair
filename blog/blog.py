@@ -25,7 +25,6 @@ def varReplace(content, var_dict):
         Cont = Cont.replace(Pattern, eval(Var, var_dict))
     Cont = Cont.replace("\\{", '{')
     Cont = Cont.replace("\\}", '}')
-    Cont = Cont.replace("\\\\", '\\')
     return Cont
 
 def sortPosts(posts):
