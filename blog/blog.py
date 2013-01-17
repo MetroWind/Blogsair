@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import sys, os
+import urlparse as URLParse
 import imp
 
 import flask
@@ -31,9 +32,15 @@ def sortPosts(posts):
     return sorted(posts, key=lambda x: x[Config.PostSort],
            reverse=Config.PostSortReverse)
 
+def dateTime2ISO8601Format(dt):
+    if dt.tzname():
+        return dt.isoformat()
+    else:
+        return dt.isoformat() + 'Z'
+
 App = flask.Flask(__name__)
 
-App.config.from_object("Config.AppConfig")
+App.config["APPLICATION_ROOT"] = Config.SiteRoot
 App.config["DEBUG"] = True
 App.config["FLATPAGES_AUTO_RELOAD"] = App.config["DEBUG"]
 App.config["FLATPAGES_EXTENSION"] = u'.md'
@@ -43,8 +50,10 @@ App.config["FREEZER_DESTINATION"] = u"../build"
 
 class BlogSite(object):
     def __init__(self):
+        self.Name = ""
         self.Categories = None
         self.Author = ""
+        self.AuthorEmail = ""
         self.FriendLinks = []
 
 class FrontEndMeta(object):
@@ -61,8 +70,11 @@ for Page in Pages:
         AllCategories.update(set(Page["categories"]))
 
 Site = BlogSite()
+Site.Name = Config.SiteName
+Site.URIPrefix = Config.SiteURIPrefix
 Site.Categories = AllCategories
-Site.Author = App.config["SITE_AUTHOR"]
+Site.Author = Config.SiteAuthor
+Site.AuthorEmail = Config.SiteAuthorEmail
 Site.FriendLinks = Config.Links
 
 @App.route("/")
@@ -90,6 +102,46 @@ def category(cat):
     Meta = FrontEndMeta(Site, ':'+cat)
     return flask.render_template("category.html", pages=CatPages, category=cat,
                                  meta=Meta)
+
+@App.route('/feed.xml')
+def feed():
+    Meta = FrontEndMeta(Site)
+    Posts = sortPosts(Pages)[:10]
+
+    # Generate a unique ID for the site.
+    DomainName = URLParse.urlparse(Site.URIPrefix).hostname
+    if hasattr(Config, "SiteID"):
+        Meta.Site.FeedID = SiteID
+    else:
+        Meta.Site.FeedID = Site.URIPrefix + Config.SiteRoot
+
+    def urlForWithDomain(endpoint, **values):
+        return Site.URIPrefix + flask.url_for(endpoint, **values)
+    for Post in Posts:
+        # Generate unique IDs for each post, and generate the
+        # creation/update time in iso format.
+        CreationTime = Post["created"]
+        CreationTimeISO = dateTime2ISO8601Format(CreationTime)
+        Post.FeedID = "tag:{},{}:{}".format(DomainName, CreationTime.year, CreationTimeISO)
+        Post.CreatedISO = CreationTimeISO
+        if "updated" in Post.meta:
+            UpdateTime = Post["updated"]
+            Post.UpdatedISO = dateTime2ISO8601Format(UpdateTime)
+        else:
+            Post.UpdatedISO = ""
+
+        # Derefernece the variables in articles.  We cannot use
+        # flask.url_for, because we need absolute URLs.
+        Post.body = varReplace(Post.body, {"app_root": App.config["APPLICATION_ROOT"],
+                                           "url_for": urlForWithDomain})
+
+    # Acquire the update time for the site.
+    Meta.Site.Updated = max([p.UpdatedISO for p in Posts] \
+                            + [p.CreatedISO for p in Posts])
+
+    Response = flask.make_response(flask.render_template("feed.xml", pages=sortPosts(Pages), meta=Meta))
+    Response.mimetype = "application/atom+xml"
+    return Response
 
 if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "build":
