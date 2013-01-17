@@ -7,14 +7,18 @@ class Link(object):
         self.Name = name
         self.Desc = desc
 
-class AppConfig(object):
-    SITE_NAME = u"A Blog"
-    SITE_AUTHOR = u"Derp"
-    APPLICATION_ROOT = "/blog"
+SiteRoot = "/blog"
+SiteURIPrefix = "http://example.org"
+# Optional: a unique ID for this blog
+# SiteID = "some unique stuff"
+
+SiteName = u"A Blog"
+SiteAuthor = u"Derp"
+SiteAuthorEmail = "foo@example.org"
 
 PostSort = "created"
 PostSortReverse = True
 
-Links = [Link("http://example.com/", "A Site", "A web site"),]
+Links = [Link("http://example.com/", u"A Site", u"A web site"),]
 Host = "user@myhost.com:/path/to/my/web/contents"
 Editor = os.environ["EDITOR"]

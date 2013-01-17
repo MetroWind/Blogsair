@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{{ config.SITE_NAME }} / {{ meta.PageTitle }}</title>
+    <title>{{ meta.Site.Name }} / {{ meta.PageTitle }}</title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
     {% if page is defined %}
@@ -21,7 +21,7 @@
     <script src="{{ url_for('static', filename='js/sidebar.js') }}"></script>
     <script src="{{ url_for('static', filename='js/img.js') }}"></script>
 
-    <link href="{{ url_for('index') }}/atom.xml" type="application/atom+xml"
+    <link href="{{ url_for('feed') }}" type="application/atom+xml"
           rel="alternate" title="Article Feed" />
 
     <script type="text/javascript"
