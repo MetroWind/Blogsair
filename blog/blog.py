@@ -139,7 +139,7 @@ def feed():
     Meta.Site.Updated = max([p.UpdatedISO for p in Posts] \
                             + [p.CreatedISO for p in Posts])
 
-    Response = flask.make_response(flask.render_template("feed.xml", pages=sortPosts(Pages), meta=Meta))
+    Response = flask.make_response(flask.render_template("feed.xml", pages=Posts, meta=Meta))
     Response.mimetype = "application/atom+xml"
     return Response
 
