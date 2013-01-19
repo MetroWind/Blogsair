@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
     <title>{{ meta.Site.Name }} / {{ meta.PageTitle }}</title>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
     {% if page is defined %}
       {% if page.language|upper == "ZH" %}
