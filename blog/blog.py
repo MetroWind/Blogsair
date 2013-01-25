@@ -144,6 +144,10 @@ def feed():
     Response.mimetype = "application/atom+xml"
     return Response
 
+@freezer.register_generator
+def feed_url_generator():
+    return ("/feed.xml", "/atom.xml")
+
 if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "build":
         freezer.freeze()
