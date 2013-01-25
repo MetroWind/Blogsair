@@ -103,6 +103,7 @@ def category(cat):
     return flask.render_template("category.html", pages=CatPages, category=cat,
                                  meta=Meta)
 
+@App.route('/atom.xml')
 @App.route('/feed.xml')
 def feed():
     Meta = FrontEndMeta(Site)
