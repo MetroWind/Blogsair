@@ -13,7 +13,7 @@ $White: #f5f4f0;
 $Black: #110600;
 
 /* Define fonts */
-$Sans: Futura, "Helvetica Neue", Helvetica, Arial, STHeiti sans-serif;
+$Sans: Futura, "Helvetica Neue", Helvetica, Arial, STHeiti, sans-serif;
 $Serif: ScalaOT, Scala, Mate, Palatino, STZhongsong, "Songti SC", serif;
 $Monospace: Inconsolata, Consolas, "Lucida Console", monospace;
 
@@ -265,6 +265,7 @@ body
 {
     font-size: $FontSizeBase;
     font-family: $Serif;
+    text-rendering: optimizeLegibility;
 }
 
 a
