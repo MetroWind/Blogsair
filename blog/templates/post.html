@@ -1,6 +1,6 @@
 {% extends "_main.html" %}
 {% block content %}
-<article lang="{{ page.language }}">
+<article{% if page.language is defined %} lang="{{ page.language }}"{% endif %}>
 <div class="PostHeader">
   <h1 class="PostTitle">{{ page.title }}</h1>
   <div class="PostMeta"><time pubdate>{{ page.created }}</time>,
