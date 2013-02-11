@@ -16,6 +16,8 @@ SiteName = u"A Blog"
 SiteAuthor = u"Derp"
 SiteAuthorEmail = "foo@example.org"
 
+DefaultLang = "en"
+
 PostSort = "created"
 PostSortReverse = True
 

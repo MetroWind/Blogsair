@@ -26,10 +26,11 @@ You will probably want to modify the style as well.  It is mainly
 defined in ``blog/static/css/style.scss``, which is in
 [SCSS](http://sass-lang.com/) syntax.  In Blogsair, each post can have
 a language property.  Stylesheets ``type-en.scss`` and
-``type-zh.scss`` are presented for English (``EN``) and Chinese
-(``ZH``) posts.  This behavior is currently hard-coded in the
+``type-zh.scss`` are presented for English (``en``) and Chinese
+(``zh``) posts.  This behavior is currently hard-coded in the
 template.  Stylesheet ``syntax.scss`` defines the color scheme of
-[Pygments](http://pygments.org/).
+[Pygments](http://pygments.org/).  The language property is also used
+to specify the ``lang`` attribute of the article in the HTML.
 
 Ultimately, you will want to rewrite the whole template, which is in
 [Jinja2](http://jinja.pocoo.org/) syntax.
@@ -60,7 +61,7 @@ A minimal post then would run like thus
     title: Some Post
     created: 2013-01-10 15:17:29
     categories: [Rumble,]
-    language: EN
+    language: en
     abstract: This is a very short post.
        
     Hello *world*!

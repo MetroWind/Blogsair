@@ -60,6 +60,7 @@ class FrontEndMeta(object):
     def __init__(self, site=None, page_title=""):
         self.Site = site
         self.PageTitle = page_title
+        self.DefaultLang = Config.DefaultLang
 
 Pages = FlatPages(App)
 freezer = Freezer(App)
