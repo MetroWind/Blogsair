@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 
 import sys, os
-import urlparse as URLParse
+if sys.version_info[0] == 3:
+    from urllib.parse import urlparse as URLParse
+else:
+    import urlparse as URLParse
 import imp
 
 import flask
