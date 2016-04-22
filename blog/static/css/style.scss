@@ -1,27 +1,6 @@
-// -*- mode: css; -*-
+// -*- mode: scss; -*-
 
-$UrlPrefix: /blog;
-
-/* Define colors */
-$Grey: #bab5ab;
-$Brown: #b38860;
-$Red: #dd4e0c;
-$Blue: #588589;
-$Green: #9aaa79;
-$Purple: #c198b3;
-$White: #f5f4f0;
-$Black: #110600;
-
-/* Define fonts */
-$Sans: Futura, "Helvetica Neue", Helvetica, Arial, STHeiti, sans-serif;
-$Serif: ScalaOT, Scala, Mate, Palatino, STZhongsong, "Songti SC", serif;
-$Monospace: Inconsolata, Consolas, "Lucida Console", monospace;
-
-$ColorBG: $White;
-$ColorFG: $Black;
-$ColorLink: $Red;
-$FontSizeBase: 15pt;
-$WidthPageNormal: 500pt;
+@import 'definitions';
 
 /* Layout */
 body
@@ -36,9 +15,10 @@ body
     margin: 30pt auto 30pt auto;
 }
 
-pre
+pre, .gist
 {
     /* overflow: auto; */
+    margin: 1em 0px 1em 0px;
 }
 
 header
@@ -229,6 +209,8 @@ aside#Sidebar
     }
 }
 /* Typography */
+@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro&subset=latin-ext);
+
 @font-face
 {
     font-family: Futura;
@@ -264,7 +246,7 @@ aside#Sidebar
 body
 {
     font-size: $FontSizeBase;
-    font-family: $Serif;
+    font-family: $MainText;
     text-rendering: optimizeLegibility;
 }
 
