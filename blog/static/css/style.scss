@@ -80,9 +80,10 @@ aside#Sidebar
         margin-bottom: 0pt;
     }
 
-    p.ImgWrapper
+    .ImgWrapper
     {
         margin: 0.8em -5pt 0.8em -5pt;
+        text-align: center;
         img
         {
             border: solid darken($ColorBG, 5%) 5pt;
