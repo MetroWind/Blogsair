@@ -14,6 +14,7 @@ def run(cmd):
     subprocess.check_call(cmd, shell=True)
 
 def build():
+    """Generate static file for the blog."""
     # Generate CSS
     AllSCSSs = glob.glob("blog/static/css/*.scss")
     for SCSS in AllSCSSs:
@@ -22,9 +23,11 @@ def build():
     run("blog/blog.py build")
 
 def deploy():
+    """Rsync the generated static files to remote."""
     run("rsync -rlpv --del build/ " + config.Host)
 
 def new():
+    """Create a new post and start editing."""
     Time = datetime.datetime.now()
     Filename = Time.strftime("%Y-%m-%d") + ".md"
     FileDir = os.path.join("blog", "contents", str(Time.year))
