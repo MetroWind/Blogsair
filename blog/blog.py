@@ -1,8 +1,8 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import sys, os
 if sys.version_info[0] == 3:
-    from urllib.parse import urlparse as URLParse
+    import urllib.parse as URLParse
 else:
     import urlparse as URLParse
 import imp
@@ -48,7 +48,7 @@ App.config["DEBUG"] = True
 App.config["FLATPAGES_AUTO_RELOAD"] = App.config["DEBUG"]
 App.config["FLATPAGES_EXTENSION"] = u'.md'
 App.config["FLATPAGES_ROOT"] = u"contents"
-App.config["FREEZER_BASE_URL"] = App.config["APPLICATION_ROOT"]
+App.config["FREEZER_BASE_URL"] = Config.SiteURIPrefix + Config.SiteRoot
 App.config["FREEZER_DESTINATION"] = u"../build"
 
 class BlogSite(object):
