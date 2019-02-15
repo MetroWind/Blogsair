@@ -149,8 +149,7 @@ class Markdown(Renderer):
                 md.treeprocessors.add('ImgClasser', ImgClassAdder(md), '_end')
 
         return markdown.markdown(post.ContentApplied, output_format="html5",
-                                 extensions=["markdown.extensions.codehilite",
-                                             ImgClasser()])
+                                 extensions=[ImgClasser(),])
 
 class AsciiDoctor(Renderer):
     Name = "asciidoctor"

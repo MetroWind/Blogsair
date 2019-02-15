@@ -218,9 +218,14 @@ code, pre
     font-family: $Monospace;
 }
 
-code, pre, pre > code
+code
 {
     font-size: 1.05rem;
+}
+
+pre, pre > code
+{
+    font-size: 1rem;
 }
 
 pre
