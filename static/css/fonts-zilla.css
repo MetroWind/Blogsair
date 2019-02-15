@@ -1,0 +1,140 @@
+@font-face
+{
+    font-family: "Zilla Slab";
+    src: local("Zilla Slab Regular"),
+    local("ZillaSlabRegular"),
+    url("../fonts/ZillaSlab/ZillaSlab-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face
+{
+    font-family: "Zilla Slab";
+    src: local("Zilla Slab Regular Italic"),
+    local("ZillaSlab-RegularItalic"),
+    url("../fonts/ZillaSlab/ZillaSlab-RegularItalic.woff") format("woff");
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face
+{
+    font-family: "Zilla Slab";
+    src: local("Zilla Slab Bold"),
+    local("ZillaSlab-Bold"),
+    url("../fonts/ZillaSlab/ZillaSlab-Bold.woff") format("woff");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face
+{
+    font-family: "Zilla Slab";
+    src: local("Zilla Slab Bold Italic"),
+    local("ZillaSlab-BoldItalic"),
+    url("../fonts/ZillaSlab/ZillaSlab-BoldItalic.woff") format("woff");
+    font-weight: 700;
+    font-style: italic;
+}
+
+@font-face
+{
+    font-family: "Zilla Slab";
+    src: local("Zilla Slab SemiBold"),
+    local("ZillaSlab-SemiBold"),
+    url("../fonts/ZillaSlab/ZillaSlab-SemiBold.woff") format("woff");
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face
+{
+    font-family: "Zilla Slab";
+    src: local("Zilla Slab SemiBold Italic"),
+    local("ZillaSlab-SemiBoldItalic"),
+    url("../fonts/ZillaSlab/ZillaSlab-SemiBoldItalic.woff") format("woff");
+    font-weight: 600;
+    font-style: italic;
+}
+
+@font-face
+{
+    font-family: "Zilla Slab";
+    src: local("Zilla Slab Medium"),
+    local("ZillaSlab-Medium"),
+    url("../fonts/ZillaSlab/ZillaSlab-Medium.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face
+{
+    font-family: "Zilla Slab";
+    src: local("Zilla Slab Medium Italic"),
+    local("ZillaSlab-MediumItalic"),
+    url("../fonts/ZillaSlab/ZillaSlab-MediumItalic.woff") format("woff");
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face
+{
+    font-family: "Zilla Slab";
+    src: local("Zilla Slab Light"),
+    local("ZillaSlab-Light"),
+    url("../fonts/ZillaSlab/ZillaSlab-Light.woff") format("woff");
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face
+{
+    font-family: "Zilla Slab";
+    src: local("Zilla Slab Light Italic"),
+    local("ZillaSlab-LightItalic"),
+    url("../fonts/ZillaSlab/ZillaSlab-LightItalic.woff") format("woff");
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face
+{
+    font-family: "Luxi Mono";
+    src: local("Luxi Mono Regular"),
+    local("LuxiMonoRegular"),
+    url("../fonts/Luxi-Mono/luximr-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face
+{
+    font-family: "Luxi Mono";
+    src: local("Luxi Mono Oblique"),
+    local("LuxiMono-Oblique"),
+    url("../fonts/Luxi-Mono/luximri-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: oblique;
+}
+
+@font-face
+{
+    font-family: "Luxi Mono";
+    src: local("Luxi Mono Bold"),
+    local("LuxiMono-Bold"),
+    url("../fonts/Luxi-Mono/luximb-webfont.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face
+{
+    font-family: "Luxi Mono";
+    src: local("Luxi Mono Bold Oblique"),
+    local("LuxiMono-BoldOblique"),
+    url("../fonts/Luxi-Mono/luximbi-webfont.woff") format("woff");
+    font-weight: bold;
+    font-style: oblique;
+}
+

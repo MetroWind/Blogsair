@@ -1,0 +1,243 @@
+// -*- mode: scss; -*-
+
+@import url("fonts-zilla.css");
+@import url("fonts-ibm-plex.css");
+@import 'definitions';
+
+body
+{
+    background-color: $ColorBG;
+    color: $ColorFG;
+    font-family: $MainText;
+    font-size: $FontSizeBase;
+    line-height: 1.5;
+}
+
+a
+{
+    color: $ColorLink;
+    text-decoration: none;
+}
+
+a:hover
+{
+    color: $ColorBG;
+    background-color: $ColorLink;
+}
+
+ul, ol
+{
+    margin: $EnvSpace 0px $EnvSpace 0px;
+}
+
+ul
+{
+    list-style: square;
+}
+
+strong
+{
+    font-weight: bold;
+}
+
+em
+{
+    font-style: italic;
+}
+
+blockquote em
+{
+    font-style: normal;
+}
+
+nav
+{
+    #IconHome
+    {
+        height: 1em;
+        width: 1em;
+        fill: currentColor;
+        overflow:hidden;
+        vertical-align: -0.15em;
+    }
+
+    ul
+    {
+        list-style: none;
+        background: $Grey;
+        color: $ColorBG;
+        text-align: center;
+        margin: 0px;
+    }
+
+    li
+    {
+        display: inline-block;
+        a
+        {
+            display: inline-block;
+            padding: 5px 10px 5px 10px;
+            color: $ColorBG;
+        }
+        a:hover
+        {
+            color: $Grey;
+            background-color: $ColorBG;
+        }
+    }
+}
+
+#SiteTitle
+{
+    margin: 50px auto 70px auto;
+    max-width: $WidthPageNormal;
+    font-style: italic;
+    font-size: 200%;
+}
+
+#Content
+{
+    margin: 20px auto 50px auto;
+    max-width: $WidthPageNormal;
+    padding: 0px 10px 0px 10px;
+}
+
+ul#ArticleList
+{
+    list-style: none;
+    text-align: center;
+
+    li.ArticleItem
+    {
+        display: block;
+        margin-top: 50px;
+        margin-bottom: 50px;
+
+        h1
+        {
+            margin-bottom: 20px;
+            font-size: 120%;
+        }
+    }
+}
+
+.PostHeader
+{
+    text-align: center;
+    margin-bottom: 40px;
+
+    h1.PostTitle
+    {
+        font-size: 172.8%;
+        font-weight: 300;
+    }
+
+    .PostMeta
+    {
+        color: $Grey;
+        font-size: 83.33%;
+    }
+}
+
+.PostText
+{
+    h2
+    {
+        font-size: 144%;
+        color: $Red;
+        margin: 30px 0px 30px 0px;
+        font-weight: 300;
+    }
+
+    h3
+    {
+        font-size: 120%;
+        margin: 25px 0px 25px 0px;
+    }
+
+    h4
+    {
+        font-size: 100%;
+        margin: 25px 0px 25px 0px;
+    }
+
+    // Apparently min() is not in CSS 3...
+    // @function min-native($x1, $x2)
+    // {
+    //     @return #{"min(#{$x1}, #{$x2})"};
+    // }
+    img
+    {
+        max-width: $WidthPageNormal;
+    }
+
+    p.ImgWrapper, .imageblock
+    {
+        text-align: center;
+        text-indent: 0pt;
+        margin-top: $EnvSpace;
+        margin-bottom: $EnvSpace;
+
+        /* img */
+        /* { */
+        /*     border: 6px solid darken($ColorBG, 5%); */
+        /*     position: relative; */
+        /*     left: -6px; */
+        /* } */
+
+        .title
+        {
+            color: $ColorCaption;
+        }
+    }
+
+    // This is for AsciiDoc, where multiple blocks are grouped in a
+    // "--" block, to denote that they belong to the same paragraph.
+    // See https://github.com/asciidoctor/asciidoctor/issues/2551.
+    .openblock > .content > .paragraph:not(:first-child) p
+    {
+        text-indent: 0px;
+    }
+}
+
+#Seperator
+{
+    width: 20px;
+    height: 4px;
+    margin: 70px auto 70px auto;
+    background-color: $Grey;
+}
+
+#disqus_thread
+{
+    margin-top: 40px;
+}
+
+code, pre
+{
+    font-family: $Monospace;
+}
+
+code, pre, pre > code
+{
+    font-size: 1.05rem;
+}
+
+pre
+{
+    line-height: 1.3;
+    margin: $EnvSpace
+            calc(-#{$CodeWidth} / 2 + #{$WidthPageNormal} / 2)
+            $EnvSpace
+            calc(-#{$CodeWidth} / 2 + #{$WidthPageNormal} / 2);
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+@media screen and (max-width: 680px)
+{
+    pre
+    {
+        margin: $EnvSpace 0px $EnvSpace 0px;
+    }
+}

@@ -1,0 +1,25 @@
+/* Define colors */
+$Grey: #bab5ab;
+$Brown: #b38860;
+$Red: #dd4e0c;
+$Blue: #588589;
+$Green: #9aaa79;
+$Purple: #c198b3;
+$White: #f5f4f0;
+$Black: #110600;
+$DarkGrey: #34495e;
+
+/* Define fonts */
+$ChineseFallback: "Source Han Sans SC", "Noto Sans CJK SC", -apple-system, STHeiti, "Microsoft Yahei", "WenQuanYi Microhei", "Droid Sans Fallback";
+$Serif: "Zilla Slab", $ChineseFallback, serif;
+$Monospace: "IBM Plex Mono", monospace;
+$MainText: $Serif;
+
+$ColorBG: $White;
+$ColorFG: $Black;
+$ColorCaption: $DarkGrey;
+$ColorLink: $Red;
+$FontSizeBase: 20px;
+$WidthPageNormal: 660px;
+$EnvSpace: 0.7em;
+$CodeWidth: 81ex;

@@ -1,0 +1,69 @@
+@import "definitions";
+
+.PostText
+{
+    line-height: 1.6;
+
+    p, li
+    {
+        text-align: left;
+    }
+
+    p
+    {
+        text-indent: 2em;
+    }
+
+    ul, ol
+    {
+        margin-left: 2em;
+        p
+        {
+            text-indent: 0px;
+        }
+
+        img
+        {
+            max-width: 620px;
+        }
+    }
+    blockquote
+    {
+        position: relative;
+        left: -0.5em;
+        background-image: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.5 352"><path fill="black" fill-opacity="0.1" d="M 112.5 128 C 174.356 128 224.5 178.145 224.5 240 C 224.5 301.855 174.356 352 112.5 352 C 50.644 352 0.5 301.855 0.5 240 L 0 224 C 0 100.288 100.288 0 224 0 L 224 64 C 181.263 64 141.083 80.643 110.863 110.863 C 105.046 116.681 99.737 122.871 94.948 129.373 C 100.667 128.473 106.528 128 112.5 128 Z M 400.5 128 C 462.355 128 512.5 178.145 512.5 240 C 512.5 301.855 462.355 352 400.5 352 C 338.645 352 288.5 301.855 288.5 240 L 288 224 C 288 100.288 388.287 0 512 0 L 512 64 C 469.264 64 429.082 80.643 398.863 110.863 C 393.045 116.681 387.736 122.871 382.947 129.373 C 388.666 128.473 394.527 128 400.5 128 Z"/></svg>');
+        background-position: top left;
+        background-repeat: no-repeat;
+        background-size: 2em;
+
+        padding-left: 2.5em;
+        font-style: normal;
+        opacity: 0.6;
+
+        p
+        {
+            text-indent: 0px;
+        }
+    }
+
+    code, pre
+    {
+        font-weight: 450;
+    }
+}
+
+.PostText#Rendered-asciidoctor
+{
+    .openblock > .content
+    {
+        .paragraph > p
+        {
+            text-indent: 0em;
+        }
+
+        .paragraph:first-child > p
+        {
+            text-indent: 2em;
+        }
+    }
+}

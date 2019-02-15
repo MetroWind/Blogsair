@@ -1,0 +1,13 @@
+<entry>
+  <title>%{htmlEscaped(Title)}</title>
+  <link rel="alternate" type="text/html" href="%{UriPrefix}/%{Uri}" />
+  <id>%{UriPrefixNoProto}/%{Uri}</id>
+  <updated>%{TimeObj.isoformat()}</updated>
+  <summary>%{Abstract}</summary>
+  <author>
+    <name>%{Author}</name>
+  </author>
+  <content type="html">
+  %{htmlEscaped(Content)}
+  </content>
+</entry>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="%{Language}">
+  <head>
+    <title>%{SiteTitle} / %{Title}</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css"
+          href="%{UriPrefixNoProto}/%{StaticDest}/css/reset.css" />
+    <link rel="stylesheet" type="text/css"
+          href="%{UriPrefixNoProto}/%{StaticDest}/css/style.css" />
+    <link rel="stylesheet" type="text/css"
+          href="%{UriPrefixNoProto}/%{StaticDest}/css/type-%{Language}.css" />
+    <link rel="stylesheet" type="text/css"
+          href="%{UriPrefixNoProto}/%{StaticDest}/css/syntax.css" />
+    <link href="%{UriPrefixNoProto}/feed.xml" type="application/atom+xml" />
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+    <!-- Source code highlight -->
+    <link rel="stylesheet"
+          href="%{UriPrefixNoProto}/%{StaticDest}/css/highlight-style-grayscale.css" />
+    <script src="%{UriPrefixNoProto}/%{StaticDest}/javascript/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet" type="text/css"
+          href="%{UriPrefixNoProto}/%{StaticDest}/css/highlight-override.css" />
+
+    %{AdditionalHead}
+  </head>
+  <body>
+    <div id="Wrapper">
+      <header>
+        <nav>
+          <ul>
+            <li>
+              <!-- See http://fvsch.com/code/svg-icons/how-to/ on how to use
+                   SVG icon in HTML. -->
+              <a href="/" aria-label="Home">
+                <svg id="IconHome" aria-hidden="true">
+                  <use xlink:href="/img/home.svg#home"></use>
+                </svg>
+              </a>
+            </li>
+            <li><a href="%{UriPrefixNoProto}">Blog</a></li>
+            <li><a href="/wiki">Notes</a></li>
+          </ul>
+        </nav>
+
+        <div id="SiteTitle">%{SiteTitle}</div>
+      </header>
+
+      <div id="Content">
+        <article lang="%{Language}">
+          <div class="PostHeader">
+            <h1 class="PostTitle">%{Title}</h1>
+            <div class="PostMeta"><time pubdate>%{Time}</time>,
+              by %{Author}
+            </div>
+          </div>
+
+          <div class="PostText" id="Rendered-%{Renderer}">%{Content}</div>
+        </article>
+
+        <div id="Seperator"></div>
+
+        %{ContentTail}
+      </div>
+    </div>
+  </body>
+</html>

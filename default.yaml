@@ -1,0 +1,16 @@
+Posts: {}
+
+Aggregates: {}
+
+Global:
+  SrcRoot: posts                # Dir to store posts source
+  RenderedRoot: output
+  PostTemplateRoot: template-posts
+  AggrTemplateRoot: template-aggregates
+  StaticRoot: static
+  StaticDest: static            # This is inside RenderedRoot
+
+  UriPrefix: some_uri
+  UriPrefixNoProto: some_uri
+  SiteTitle: A Blog
+  Host: "localhost:/srv/http/blog"

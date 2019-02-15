@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>%{SiteTitle}</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css"
+          href="%{UriPrefixNoProto}/%{StaticDest}/css/reset.css" />
+    <link rel="stylesheet" type="text/css"
+          href="%{UriPrefixNoProto}/%{StaticDest}/css/style.css" />
+    <link rel="stylesheet" type="text/css"
+          href="%{UriPrefixNoProto}/%{StaticDest}/css/syntax.css" />
+    <link href="%{UriPrefixNoProto}/feed.xml" type="application/atom+xml" />
+
+    %{AdditionalHead}
+  </head>
+  <body>
+    <div id="Wrapper">
+      <header>
+        <nav>
+          <ul>
+            <li>
+              <!-- See http://fvsch.com/code/svg-icons/how-to/ on how to use
+                   SVG icon in HTML. -->
+              <a href="/" aria-label="Home">
+                <svg id="IconHome" aria-hidden="true">
+                  <use xlink:href="/img/home.svg#home"></use>
+                </svg>
+              </a>
+            </li>
+            <li><a href="%{UriPrefixNoProto}">Blog</a></li>
+            <li><a href="/wiki">Notes</a></li>
+          </ul>
+        </nav>
+
+        <div id="SiteTitle">%{SiteTitle}</div>
+      </header>
+      <div id="Content">
+        <ul id="ArticleList">
+          %{Body}
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
