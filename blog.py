@@ -72,7 +72,7 @@ class Template(object):
         try:
             Result = eval(TagContent, {"__builtins__": None}, env)
         except Exception as Err:
-            Logger.error("Error evaluating tag: {}\nGot error: {}"
+            Logger.warning("Error evaluating tag: {}\nGot error: {}"
                          .format(TagContent, repr(Err)))
             return Tag
         else:
@@ -146,7 +146,7 @@ class Markdown(Renderer):
         class ImgClasser(markdown.extensions.Extension):
             def extendMarkdown(self, md, md_globals):
                 # Insert instance of 'mypattern' before 'references' pattern
-                md.treeprocessors.add('ImgClasser', ImgClassAdder(md), '_end')
+                md.treeprocessors.register(ImgClassAdder(md), 'ImgClasser', 0)
 
         return markdown.markdown(post.ContentApplied, output_format="html5",
                                  extensions=[ImgClasser(),])
@@ -179,7 +179,7 @@ class Configuration(dict):
     def updateWithFile(self, filename):
         if os.path.exists(filename):
             with open(filename, 'r') as f:
-                Conf = yaml.load(f)
+                Conf = yaml.load(f, Loader=yaml.Loader)
                 for Section in self:
                     if Section in Conf:
                         self[Section].update(Conf[Section])
@@ -200,6 +200,21 @@ class MarkupPost(object):
         self.File = ""
         self.Rendered = ""
         self.Time = None
+        self._Updated = None
+
+    @property
+    def Updated(self):
+        if self._Updated is None:
+            return self.Time
+        else:
+            return self._Updated
+
+    @staticmethod
+    def _str2Time(time_str):
+        try:
+            return datetime.datetime.strptime(time_str, "%Y-%m-%d %H:%M")
+        except ValueError:
+            return datetime.datetime.strptime(time_str, "%Y-%m-%d %H:%M:%S")
 
     def loadFromFile(self, filename):
         LinesHeader = []
@@ -216,19 +231,17 @@ class MarkupPost(object):
                 else:
                     LinesContent.append(Line)
 
-        self.Metadata = yaml.load("".join(LinesHeader))
+        self.Metadata = yaml.load("".join(LinesHeader), Loader=yaml.Loader)
         self.Content = "".join(LinesContent)
         self.File = filename
         if isinstance(self.Metadata["Time"], datetime.datetime):
             self.Time = self.Metadata["Time"]
             self.Metadata["Time"] = self.Time.strftime("%Y-%m-%d %H:%M")
         else:
-            try:
-                self.Time = datetime.datetime.strptime(self.Metadata["Time"],
-                                                       "%Y-%m-%d %H:%M")
-            except ValueError:
-                self.Time = datetime.datetime.strptime(self.Metadata["Time"],
-                                                       "%Y-%m-%d %H:%M:%S")
+            self.Time = self._str2Time(self.Metadata["Time"])
+
+        if "Updated" in self.Metadata:
+            self._Updated = self._str2Time(self.Metadata.get("Updated"))
 
         if "Renderer" in self.Metadata:
             self.Renderer = self.Metadata["Renderer"]
@@ -282,7 +295,7 @@ class Aggregation(object):
 
     def _load(self, base_dir):
         with open(os.path.join(base_dir, self.ConfigFileBaseName), 'r') as f:
-            Config = yaml.load(f)
+            Config = yaml.load(f, Loader=yaml.Loader)
 
         with open(os.path.join(base_dir, Config["Frame"]), 'r') as f:
             self.FrameTemp = Template(f.read())
@@ -305,6 +318,7 @@ class Aggregation(object):
         Env.update(Config["Global"])
         Env.update(Config["Aggregates"])
         Env["Body"] = "".join(Body)
+        Env["Updated"] = max(p.Updated for p in posts)
         self.Rendered = self.FrameTemp.apply(Env)
         return self.Rendered
 
@@ -415,7 +429,7 @@ def build(args):
     # Generate CSS
     AllSCSSs = glob.glob("static/css/*.scss")
     for SCSS in AllSCSSs:
-        subprocess.check_call("scss -C {} {}".format(
+        subprocess.check_call("sassc {} {}".format(
             SCSS, os.path.splitext(SCSS)[0] + ".css"),
                               shell=True)
     os.makedirs(Config["Global"]["RenderedRoot"])

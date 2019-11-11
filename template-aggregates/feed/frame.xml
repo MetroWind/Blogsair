@@ -4,6 +4,6 @@
   <link href="%{UriPrefix}/feed.xml" rel="self" />
   <link href="%{UriPrefix}/" />
   <id>%{UriPrefixNoProto}</id>
-  <updated>%{Updated}</updated>
+  <updated>%{Updated.isoformat()}</updated>
   %{Body}
 </feed>
